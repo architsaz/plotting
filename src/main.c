@@ -31,19 +31,19 @@ int main() {
     // Histogram : 
     int num_values = 1000;  // Number of values to analyze
     double max_value = 100.0;  // Maximum range value
-    int num_bins = 20 ;     // Number of bins
+    int num_bins = 10 ;     // Number of bins
     double data[num_values];
-    int bins[num_bins];
+    int *bins;
 
     // Generate random data
     generate_random_values(data, num_values, max_value);
 
-    int max_bin_count=compute_disturbution_histogram(data,num_values,bins,num_bins,max_value);
+    int max_bin_count=compute_disturbution_histogram(data,num_values,&bins,num_bins,max_value);
 
     // save histogeram
-    plot_histogram(bins,num_bins,max_value,"data.dat","Histogram Titel","bins","frequency" ,"histogram.png","data_legend",max_bin_count);
+    plot_histogram(bins,num_bins,max_value,num_values,"data.dat","Histogram Title","bins","frequency" ,"histogram.png","data_legend",max_bin_count);
 
 
-
+    free(bins);
     return 0;
 }
